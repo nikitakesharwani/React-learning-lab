@@ -1,22 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-const parent = React.createElement("div", { id: "parent" }, [
-  React.createElement("div", { id: "child" }, [
-    React.createElement("h1", {}, "Hiiii"),
-    React.createElement("h2", {}, "H2"),
-  ]),
-  React.createElement("div", { id: "child2" }, [
-    React.createElement("h1", {}, "Hiiii"),
-    React.createElement("h2", {}, "H2"),
-  ]),
-]);
-
+//Core React Syntax
 const heading = React.createElement(
   "h1",
   { id: "heading", class: "head" },
   "Hello World from javascript!"
 );
+
+//JSX syntax (React Element)
+const jsxHeading = (
+  <h1 id="heading" className="head">
+    Namaste React from JSX!
+  </h1>
+);
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(parent);
+root.render(jsxHeading);
