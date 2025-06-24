@@ -1,20 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-//Two types of component:
-//1. React Class Component
-//2. React Functional Component
+//Component Composition - is putting component inside another component.
 
-//JSX syntax (React Element) - Naming Convention, always starts with small letter
-const heading = (
-  <h1 id="heading" className="head">
-    Namaste React from JSX!
-  </h1>
-);
+const TitleComponent = () => <h1>Namaste React from Title Component🚀</h1>;
 
-//React Functional Component - Naming Convention, always starts with Capital letter
 const HeadingComponent = () => (
-  <h1>Namaste React from React Functional Component</h1>
+  <div id="container">
+    <TitleComponent />
+    <h1>Namaste React from React Functional Component</h1>
+  </div>
 );
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
