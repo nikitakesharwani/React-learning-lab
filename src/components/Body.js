@@ -1,10 +1,32 @@
 import RestaurantCard from "./RestaurantCard";
 import resList from "../utils/mockData";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Body = () => {
+  //removed the resList and set this to null so on page load the page will be empty, after rendering completes, the useEffect will populate the data.
+  const [listOfRestaurant, setListOfRestaurant] = useState([]);
 
-  const [listOfRestaurant, setListOfRestaurant] = useState(resList);
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    const data = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.97530&lng=77.59100&is-seo-ho"
+    );
+    const json = await data.json();
+    const restaurantData =
+      json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants;
+
+    setTimeout(() => {
+      console.log("Timeout occured");
+    }, 10000);
+
+    setListOfRestaurant(restaurantData);
+    console.log(restaurantData);
+  };
+
+  console.log("Page rendered");
 
   return (
     <div className="body">
