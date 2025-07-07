@@ -1,5 +1,6 @@
 import { LOGO_URL } from "../utils/constants";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [btnName, setBtnName] = useState("Login");
@@ -8,7 +9,7 @@ const Header = () => {
   //If dependency array is empty = [] =>useEffect is called on initial render(just once)
   //If dependency array is [btnName] => useEffect is called everytime btnName is updated
   useEffect(() => {
-    console.log()
+    console.log();
   }, []);
 
   return (
@@ -18,9 +19,15 @@ const Header = () => {
       </div>
       <div className="nav-items">
         <ul>
-          <li>Home</li>
-          <li>About Us</li>
-          <li>Contact Us</li>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/about">About</Link>
+          </li>
+          <li>
+            <Link to="/contact">Contact</Link>
+          </li>
           <li>Cart</li>
           <button
             className="btn-login"

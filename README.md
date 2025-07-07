@@ -44,5 +44,22 @@ useRouteError - a function call to gives more information about the error relate
 # useEffect Cases
 
 1. If no dependency array => useEffect is called on every render
-2. If dependency array is empty = [] =>useEffect is called on initial render(just once)
+2. If dependency array is empty = [] => useEffect is called on initial render(just once)
 3. If dependency array is [btnName] state variable => useEffect is called everytime btnName is updated, it is dependent on the value of state variable
+
+# 2 types of routing
+
+1. Client side routing - where there is no network call the home page all the data of other pages
+   Handled by: react-router-dom
+   How it works:
+   React loads a single HTML file (index.html).
+   When the user navigates, React updates the URL in the browser and renders the corresponding component without making a network request for a new page.
+   No full page reload, faster transitions.
+   Ideal for: SPAs (Single Page Applications)
+
+2. Server side routing - where a network call is made to fetch the page data.
+   Used with: frameworks like Next.js
+   How it works:
+   Each route is mapped to a specific server-rendered page or component.
+   When the user navigates, the browser makes a network request, and the server responds with an HTML page rendered using React.
+   Better for: SEO, faster initial load, dynamic content.
