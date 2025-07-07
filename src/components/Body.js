@@ -1,9 +1,8 @@
 import RestaurantCard from "./RestaurantCard";
-import resList from "../utils/mockData";
 import { useEffect, useState } from "react";
+import Shimmer from "./Shimmer";
 
 const Body = () => {
-  //removed the resList and set this to null so on page load the page will be empty, after rendering completes, the useEffect will populate the data.
   const [listOfRestaurant, setListOfRestaurant] = useState([]);
 
   useEffect(() => {
@@ -15,20 +14,20 @@ const Body = () => {
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.97530&lng=77.59100&is-seo-ho"
     );
     const json = await data.json();
+
+    //Optional Chaining - add ?.
     const restaurantData =
-      json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants;
-
-    setTimeout(() => {
-      console.log("Timeout occured");
-    }, 10000);
-
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants;
     setListOfRestaurant(restaurantData);
-    console.log(restaurantData);
   };
 
-  console.log("Page rendered");
+  //Conditional rendering
+  //if (listOfRestaurant.length === 0) return <Shimmer />; OR The below code using ternary operator
 
-  return (
+  return listOfRestaurant.length === 0 ? (
+    <Shimmer />
+  ) : (
     <div className="body">
       <div className="filter">
         <button
