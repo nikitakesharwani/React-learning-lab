@@ -1,6 +1,8 @@
 import { LOGO_URL } from "../utils/constants";
 
 const Header = () => {
+  let btnName = "login";
+  console.log("Header Rendered");
   return (
     <div className="header">
       <div className="logo-container">
@@ -12,6 +14,15 @@ const Header = () => {
           <li>About Us</li>
           <li>Contact Us</li>
           <li>Cart</li>
+          <button
+            className="btn-login"
+            onClick={() => {
+              btnName = "Logout";
+              console.log(btnName);
+            }}
+          >
+            {btnName}
+          </button>
         </ul>
       </div>
     </div>
