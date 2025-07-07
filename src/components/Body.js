@@ -1,3 +1,4 @@
+import { API_FETCH_URL } from "../utils/constants";
 import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
@@ -17,9 +18,7 @@ const Body = () => {
   };
 
   const fetchData = async () => {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.97530&lng=77.59100&is-seo-ho"
-    );
+    const data = await fetch(API_FETCH_URL);
     const json = await data.json();
 
     //Optional Chaining - add ?.
