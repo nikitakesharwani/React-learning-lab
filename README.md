@@ -31,3 +31,18 @@ Reconciliation Algorithm(react fiber) introduced in react 16
 Virtual DOM - representation of actual DOM, React objects/react element is virtual DOM
 Actual DOM - the elements we see in developer tool
 Diff Algorithm - finds the difference between 2 virtual DOM, updted and previous virtual DOM
+createBrowserRouter - for creating route configuration
+RouterProvider - that help in routing page
+react-router-dom - library to creating routing
+
+# Hooks Learned
+
+useState - A state variable used for managing state of a component.
+useEffect - a function that takes callback function and the dependency array, it executes when the component is rendered.
+useRouteError - a function call to gives more information about the error related to that path in the form of object
+
+# useEffect Cases
+
+1. If no dependency array => useEffect is called on every render
+2. If dependency array is empty = [] =>useEffect is called on initial render(just once)
+3. If dependency array is [btnName] state variable => useEffect is called everytime btnName is updated, it is dependent on the value of state variable

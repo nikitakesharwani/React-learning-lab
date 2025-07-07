@@ -1,8 +1,15 @@
 import { LOGO_URL } from "../utils/constants";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Header = () => {
   const [btnName, setBtnName] = useState("Login");
+
+  //If no dependency array => useEffect is called on every render
+  //If dependency array is empty = [] =>useEffect is called on initial render(just once)
+  //If dependency array is [btnName] => useEffect is called everytime btnName is updated
+  useEffect(() => {
+    console.log()
+  }, []);
 
   return (
     <div className="header">

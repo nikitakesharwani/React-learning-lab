@@ -6,14 +6,12 @@ import Shimmer from "./Shimmer";
 const Body = () => {
   const [listOfRestaurant, setListOfRestaurant] = useState([]);
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
-
   const [searchText, setSearchText] = useState("");
 
   const searchByName = () => {
     let filteredRestaurantByName = listOfRestaurant.filter((res) =>
       res.info.name.toLowerCase().includes(searchText.toLowerCase())
     );
-
     setFilteredRestaurant(filteredRestaurantByName);
   };
 
