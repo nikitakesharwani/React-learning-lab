@@ -35,13 +35,14 @@ createBrowserRouter - for creating route configuration
 RouterProvider Component - that help in routing page
 react-router-dom - library to creating routing
 Outlet Component - to place a page route dynamically
-Link Component - to create navigation
+Link Component - to create navigation, behind the scene it uses anchor tag, its a wrapper over anchor tag and react-router-dom make it not to reload the page like anchor tag
 
 # Hooks Learned
 
 useState - A state variable used for managing state of a component.
 useEffect - a function that takes callback function and the dependency array, it executes when the component is rendered.
 useRouteError - a function call to gives more information about the error related to that path in the form of object
+useParams - gets the parameter from the url
 
 # useEffect Cases
 
