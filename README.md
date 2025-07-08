@@ -27,42 +27,49 @@ We can export a component as named as well as default export
 
 # Important Terminologies
 
-Reconciliation Algorithm (React Fiber)
-Introduced in React 16, the reconciliation algorithm (part of React Fiber) is responsible for efficiently updating the UI by determining what has changed in the virtual DOM and updating only the necessary parts in the actual DOM.
+1. Reconciliation Algorithm (React Fiber)
+   Introduced in React 16, the reconciliation algorithm (part of React Fiber) is responsible for efficiently updating the UI by determining what has changed in the virtual DOM and updating only the necessary parts in the actual DOM.
 
-Virtual DOM
-A lightweight JavaScript representation of the actual DOM. Each React element is a virtual DOM object. It improves performance by minimizing direct interactions with the real DOM.
+2. Virtual DOM
+   A lightweight JavaScript representation of the actual DOM. Each React element is a virtual DOM object. It improves performance by minimizing direct interactions with the real DOM.
 
-Actual DOM
-The real Document Object Model that we can see in the browser's developer tools. It's what gets displayed to the user.
+3. Actual DOM
+   The real Document Object Model that we can see in the browser's developer tools. It's what gets displayed to the user.
 
-Diff Algorithm
-Compares the updated virtual DOM with the previous one to detect changes. This difference is used to update only the parts of the actual DOM that have changed, improving efficiency.
+4. Diff Algorithm
+   Compares the updated virtual DOM with the previous one to detect changes. This difference is used to update only the parts of the actual DOM that have changed, improving efficiency.
 
-createBrowserRouter
-A function from react-router-dom used to create a route configuration object for your application, enabling navigation using the browser's history API.
+5. createBrowserRouter
+   A function from react-router-dom used to create a route configuration object for your application, enabling navigation using the browser's history API.
 
-RouterProvider Component
-A higher-order component provided by react-router-dom that enables route context and routing in the application. Wraps the app to allow route handling.
+6. RouterProvider Component
+   A higher-order component provided by react-router-dom that enables route context and routing in the application. Wraps the app to allow route handling.
 
-react-router-dom
-A routing library for React that enables navigation between components without reloading the page. It provides multiple utilities like Route, Link, Outlet, etc.
+7. react-router-dom
+   A routing library for React that enables navigation between components without reloading the page. It provides multiple utilities like Route, Link, Outlet, etc.
 
-Outlet Component
-A placeholder component used to render child routes dynamically inside parent routes.
+8. Outlet Component
+   A placeholder component used to render child routes dynamically inside parent routes.
 
-Link Component
-Used for navigation in a React app. It is a wrapper over the anchor (<a>) tag, but unlike anchor tags, it prevents full page reloads, providing a single-page application experience.
+9. Link Component
+   Used for navigation in a React app. It is a wrapper over the anchor (<a>) tag, but unlike anchor tags, it prevents full page reloads, providing a single-page application experience.
 
-super(props)
-Used in class components to call the constructor of the parent class (React.Component). This allows access to this.props inside the constructor.
+10. super(props)
+    Used in class components to call the constructor of the parent class (React.Component). This allows access to this.props inside the constructor.
 
 # Hooks Learned
 
-useState - A state variable used for managing state of a component.
-useEffect - a function that takes callback function and the dependency array, it executes when the component is rendered.
-useRouteError - a function call to gives more information about the error related to that path in the form of object
-useParams - gets the parameter from the url
+1. useState
+   A React Hook that lets you add a state variable to a functional component. Returns an array with the current state and a function to update it.
+
+2. useEffect
+   A React Hook used to perform side effects like data fetching, subscriptions, or DOM manipulation. It takes a callback and an optional dependency array. Runs after the render phase.
+
+3. useRouteError
+   A React Router hook that provides detailed information about any error that occurred while loading a route. Returns an error object that can be used to display custom error messages.
+
+4. useParams
+   A React Router hook used to access dynamic URL parameters. Returns an object of key-value pairs from the current route.
 
 # useEffect Cases
 
@@ -75,20 +82,105 @@ useParams - gets the parameter from the url
 1. Client side routing - where there is no network call the home page all the data of other pages
    Handled by: react-router-dom
    How it works:
-   React loads a single HTML file (index.html).
-   When the user navigates, React updates the URL in the browser and renders the corresponding component without making a network request for a new page.
-   No full page reload, faster transitions.
-   Ideal for: SPAs (Single Page Applications)
+
+   - React loads a single HTML file (index.html).
+   - When the user navigates, React updates the URL in the browser and renders the corresponding component without making a network request for a new page.
+   - No full page reload, faster transitions.
+   - Ideal for: SPAs (Single Page Applications)
 
 2. Server side routing - where a network call is made to fetch the page data.
    Used with: frameworks like Next.js
    How it works:
-   Each route is mapped to a specific server-rendered page or component.
-   When the user navigates, the browser makes a network request, and the server responds with an HTML page rendered using React.
-   Better for: SEO, faster initial load, dynamic content.
+   - Each route is mapped to a specific server-rendered page or component.
+   - When the user navigates, the browser makes a network request, and the server responds with an HTML page rendered using React.
+   - Better for: SEO, faster initial load, dynamic content.
 
 # Class Component
 
-1. a defined class extends React.Component class which comes from react library
-2. it uses constructor to pass props and take super(props) inside it
-3. to access the props we write {this.props.name}
+1. A class component is created by extending React.Component from the React library.
+    class MyComponent extends React.Component {}
+
+2. It uses a constructor() to initialize state and receive props, and super(props) is used to pass props to the base class.
+
+3. Props can be accessed using this.props.propertyName.
+    Example: {this.props.name}
+
+4. State is updated using this.setState() which triggers a re-render.
+
+# Component Lifecycle
+
+---- Component Class Lifecycle (Mounting Phase):
+The lifecycle of a React class component during mounting involves the following key methods:
+
+1. constructor()
+   Initializes state and binds methods. Called only once when the component is created.
+
+2. static getDerivedStateFromProps()
+   Rarely used. Allows the component to update state based on props before rendering.
+
+3. render()
+   (Part of the Render Phase)
+   Returns JSX to build the virtual DOM. It’s a pure function and does not interact with the actual DOM.
+
+4. componentDidMount()
+   (Part of the Commit Phase)
+   Invoked once after the component is added to the actual DOM. Ideal for API calls, subscriptions, and DOM manipulations.
+
+---- React Lifecycle Phases:
+React lifecycle is split into two main phases:
+
+# Render Phase
+
+- Methods like constructor, getDerivedStateFromProps, and render are called.
+- React builds the virtual DOM and determines what needs to change.
+- No actual DOM mutations or side-effects occur here.
+
+# Commit Phase
+
+- Changes calculated in the render phase are applied to the actual DOM.
+- componentDidMount() is called here during mounting.
+- Safe to perform DOM updates, API calls, etc.
+
+------------------- Render Phase -------------------
+
+1. Parent Constructor
+2. Parent Render
+   First Child Constructor
+   First Child Render
+   GrandChild Constructor
+   GrandChild Render
+   Second Child Constructor
+   Second Child Render
+   GrandChild Constructor
+   GrandChild Render
+
+💡 Note: DOM is not updated yet during the render phase. React is building the virtual DOM tree.
+
+=====================DOM UPDATED - IN SINGLE BATCH=====================
+DOM UPDATED – IN SINGLE BATCH – What It Means
+
+When React mounts components (or re-renders them), it does not update the actual DOM immediately after every render. Instead, it:
+
+1. Collects all virtual DOM changes made during the render phase.
+2. Batches them together.
+3. Then, in the commit phase, it applies all DOM updates in one go (in a single batch).
+
+🧠 Why does React do this?
+
+- To optimize performance.
+- Updating the real DOM is expensive — doing it in a single batch is faster than updating the DOM after every component render.
+
+✅ Example
+
+1. If you're mounting a parent and two child components:
+   - React renders: Parent ➝ Child ➝ Grandchild (just virtual DOM, no visible change yet)
+   - Then DOM is updated all at once: ✅ all 3 appear on screen together
+
+------------------- Commit Phase -------------------
+
+4. GrandChild ComponentDidMount()
+5. Second Child componentDidMount()
+6. First Child componentDidMount()
+7. Parent componentDidMount()
+
+💡 Note: In the commit phase, React applies changes to the actual DOM and runs componentDidMount() in child-first order.

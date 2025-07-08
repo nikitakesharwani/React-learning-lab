@@ -1,4 +1,6 @@
 import React from "react";
+import UserContactClass from "./UserContactClass";
+
 class UserClass extends React.Component {
   constructor(props) {
     super(props);
@@ -6,8 +8,15 @@ class UserClass extends React.Component {
       count: 0,
       count2: 1,
     };
+    console.log("Child Constructor");
   }
+
+  componentDidMount() {
+    console.log("Children Component Did Mount");
+  }
+
   render() {
+    console.log("Child Render");
     const { name, location } = this.props;
     const { count, count2 } = this.state;
     return (
@@ -26,8 +35,7 @@ class UserClass extends React.Component {
         </button>
         <h1>Count - {count2}</h1>
         <h3>User Name : {name} </h3>
-        <h3>Location : {location} </h3>
-        <h3>Contact : 9254897546 </h3>
+        <UserContactClass />
       </div>
     );
   }
