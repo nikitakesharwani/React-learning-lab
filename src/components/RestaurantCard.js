@@ -5,7 +5,6 @@ const styleCard = {
 };
 
 const RestaurantCard = ({ resData }) => {
-  console.log(resData.info);
   const { name, cuisines, avgRating, costForTwo, sla, cloudinaryImageId } =
     resData?.info;
   return (
@@ -25,6 +24,5 @@ const RestaurantCard = ({ resData }) => {
 };
 
 export default RestaurantCard;
-
 
 //https://www.swiggy.com/dapi/restaurants/list/update

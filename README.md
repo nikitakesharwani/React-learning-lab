@@ -32,8 +32,10 @@ Virtual DOM - representation of actual DOM, React objects/react element is virtu
 Actual DOM - the elements we see in developer tool
 Diff Algorithm - finds the difference between 2 virtual DOM, updted and previous virtual DOM
 createBrowserRouter - for creating route configuration
-RouterProvider - that help in routing page
+RouterProvider Component - that help in routing page
 react-router-dom - library to creating routing
+Outlet Component - to place a page route dynamically
+Link Component - to create navigation
 
 # Hooks Learned
 
