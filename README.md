@@ -27,15 +27,35 @@ We can export a component as named as well as default export
 
 # Important Terminologies
 
-Reconciliation Algorithm(react fiber) introduced in react 16
-Virtual DOM - representation of actual DOM, React objects/react element is virtual DOM
-Actual DOM - the elements we see in developer tool
-Diff Algorithm - finds the difference between 2 virtual DOM, updted and previous virtual DOM
-createBrowserRouter - for creating route configuration
-RouterProvider Component - that help in routing page
-react-router-dom - library to creating routing
-Outlet Component - to place a page route dynamically
-Link Component - to create navigation, behind the scene it uses anchor tag, its a wrapper over anchor tag and react-router-dom make it not to reload the page like anchor tag
+Reconciliation Algorithm (React Fiber)
+Introduced in React 16, the reconciliation algorithm (part of React Fiber) is responsible for efficiently updating the UI by determining what has changed in the virtual DOM and updating only the necessary parts in the actual DOM.
+
+Virtual DOM
+A lightweight JavaScript representation of the actual DOM. Each React element is a virtual DOM object. It improves performance by minimizing direct interactions with the real DOM.
+
+Actual DOM
+The real Document Object Model that we can see in the browser's developer tools. It's what gets displayed to the user.
+
+Diff Algorithm
+Compares the updated virtual DOM with the previous one to detect changes. This difference is used to update only the parts of the actual DOM that have changed, improving efficiency.
+
+createBrowserRouter
+A function from react-router-dom used to create a route configuration object for your application, enabling navigation using the browser's history API.
+
+RouterProvider Component
+A higher-order component provided by react-router-dom that enables route context and routing in the application. Wraps the app to allow route handling.
+
+react-router-dom
+A routing library for React that enables navigation between components without reloading the page. It provides multiple utilities like Route, Link, Outlet, etc.
+
+Outlet Component
+A placeholder component used to render child routes dynamically inside parent routes.
+
+Link Component
+Used for navigation in a React app. It is a wrapper over the anchor (<a>) tag, but unlike anchor tags, it prevents full page reloads, providing a single-page application experience.
+
+super(props)
+Used in class components to call the constructor of the parent class (React.Component). This allows access to this.props inside the constructor.
 
 # Hooks Learned
 
@@ -66,3 +86,9 @@ useParams - gets the parameter from the url
    Each route is mapped to a specific server-rendered page or component.
    When the user navigates, the browser makes a network request, and the server responds with an HTML page rendered using React.
    Better for: SEO, faster initial load, dynamic content.
+
+# Class Component
+
+1. a defined class extends React.Component class which comes from react library
+2. it uses constructor to pass props and take super(props) inside it
+3. to access the props we write {this.props.name}
