@@ -57,6 +57,12 @@ We can export a component as named as well as default export
 10. super(props)
     Used in class components to call the constructor of the parent class (React.Component). This allows access to this.props inside the constructor.
 
+11. React.lazy()
+    Allows you to load components dynamically (only when needed), enabling code splitting.
+
+12. Suspense
+    Is used to wrap lazy-loaded components and show a fallback UI (like a loader) while the component is being loaded.
+
 # Hooks Learned
 
 1. useState
@@ -204,3 +210,53 @@ The Single Responsibility Principle states that a class or module should have on
 # 🔁 Custom Hooks
 
 Custom Hooks in React allow you to extract and reuse stateful logic across components. They are JavaScript functions that start with use and can call other hooks internally. Custom Hooks promote cleaner, more modular, and DRY (Don't Repeat Yourself) code.
+
+# 📦 Chunking (Code Splitting) in React
+
+Chunking (also called code splitting or dynamic bundling) is a performance optimization technique in React where your app is split into smaller JavaScript bundles ("chunks") that are loaded only when needed.
+
+React supports this using dynamic import() and tools like React.lazy and Suspense.
+
+✅ Pros:
+
+- Faster initial load time
+- Reduces bundle size
+- Loads only the code required for the current view
+
+❌ Cons:
+
+- Slight delay when loading chunks on demand
+- Requires careful error handling for chunk load failures
+- Adds complexity in routing and lazy loading setup
+
+# ⚙️ On-Demand Loading vs. Chunking (Code Splitting)
+
+On-demand loading is very similar to chunking (or code splitting)—they're closely related concepts and often used together in React apps.
+
+✅ What's the Difference?
+🔧 Chunking / Code Splitting:
+This is the technique of breaking your code into smaller bundles (chunks).
+
+🚀 On-Demand Loading:
+This refers to the behavior of loading those chunks only when needed (i.e., on demand).
+
+📌 In Short:
+🧩 Chunking enables on-demand loading by splitting code into smaller parts that can be loaded only when required—like loading a specific page/component when the user navigates to it.
+
+React features like React.lazy() and import() help implement both.
+
+# 💤 React.lazy() and Suspense
+
+React.lazy() - allows you to load components dynamically (only when needed), enabling code splitting.
+
+Suspense - is used to wrap lazy-loaded components and show a fallback UI (like a loader) while the component is being loaded.
+
+# 📦 Example: lazy(() => import("./components/Grocery"))
+
+This line uses React.lazy() to dynamically load the Grocery component only when it's needed (e.g., during navigation).
+
+const Grocery = lazy(() => import("./components/Grocery"));
+
+- import() is a dynamic import that returns a promise.
+- React.lazy() tells React to treat the imported module as a lazy-loaded component.
+- Used with <Suspense fallback={<Loader />}><Suspense/> to handle loading states.
