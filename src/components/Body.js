@@ -1,13 +1,16 @@
-import { API_FETCH_URL } from "../utils/constants";
 import RestaurantCard from "./RestaurantCard";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useListOfRestaurant from "../utils/useListOfRestaurant";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
-  const [listOfRestaurant, setListOfRestaurant] = useState([]);
-  const [filteredRestaurant, setFilteredRestaurant] = useState([]);
   const [searchText, setSearchText] = useState("");
+  let [filteredRestaurant, setFilteredRestaurant] = useState([]);
+
+  const listOfRestaurant = useListOfRestaurant();
+  filteredRestaurant = useListOfRestaurant();
 
   const searchByName = () => {
     let filteredRestaurantByName = listOfRestaurant.filter((res) =>
@@ -16,21 +19,9 @@ const Body = () => {
     setFilteredRestaurant(filteredRestaurantByName);
   };
 
-  const fetchData = async () => {
-    const data = await fetch(API_FETCH_URL);
-    const json = await data.json();
+  const onlineStatus = useOnlineStatus();
 
-    //Optional Chaining - add ?.
-    const restaurantData =
-      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants;
-    setListOfRestaurant(restaurantData);
-    setFilteredRestaurant(restaurantData);
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
+  if (!onlineStatus) return <h1>You are Offline!!!, Check your Connection</h1>;
 
   //Conditional rendering
   return listOfRestaurant.length === 0 ? (

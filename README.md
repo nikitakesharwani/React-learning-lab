@@ -185,11 +185,22 @@ When React mounts components (or re-renders them), it does not update the actual
 
 💡 Note: In the commit phase, React applies changes to the actual DOM and runs componentDidMount() in child-first order.
 
-componentDidMount:
+# 🛠️ componentDidMount:
+
 Runs once after the component is mounted (inserted into the DOM).
 
-🧹componentWillUnmount - Cleanup on Component Unmount
+# 🧹componentWillUnmount - Cleanup on Component Unmount
+
 In a Single Page Application (SPA), components don’t reload the full page — they mount and unmount instead. If we’re using side effects like setInterval or event listeners, it’s important to clean them up when the component unmounts to avoid memory leaks or unwanted behavior.
 
-🔄 componentDidUpdate (or useEffect with dependencies)
+# 🔄 componentDidUpdate (or useEffect with dependencies)
+
 This lifecycle method (or equivalent hook) runs after a component re-renders due to a change in state or props. It's useful for performing actions after the DOM updates based on a particular state variable.
+
+# 📘 Single Responsibility Principle
+
+The Single Responsibility Principle states that a class or module should have only one reason to change, meaning it should have only one responsibility or job. This improves maintainability, readability, and makes the code easier to test and refactor.
+
+# 🔁 Custom Hooks
+
+Custom Hooks in React allow you to extract and reuse stateful logic across components. They are JavaScript functions that start with use and can call other hooks internally. Custom Hooks promote cleaner, more modular, and DRY (Don't Repeat Yourself) code.
