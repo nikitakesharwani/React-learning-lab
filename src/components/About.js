@@ -4,23 +4,47 @@ import UserClass from "../components/UserClass";
 class About extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      count: 0,
+    };
 
-    console.log("Parent Constructor");
+    //console.log("Parent Constructor");
   }
   //componentDidMount is used to make an API call, similar to useEffect()
   componentDidMount() {
     //Make an API call here
-    console.log("Parent Component Did Mount");
+    //console.log("Parent Component Did Mount");
+
+    this.timer = setInterval(() => {
+      console.log("Component interval Op");
+    }, 1000);
+  }
+  componentDidUpdate() {
+    //updates based on some value
+    console.log("Component Did Update");
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timer);
+    console.log("Component did unmount");
   }
 
   render() {
-    console.log("Parent Render");
+    //console.log("Parent Render");
     return (
       <div>
         <h1>About Us</h1>
+        <button
+          onClick={() => {
+            this.setState({
+              count: this.state.count + 1,
+            });
+          }}
+        >
+          click to increase{this.state.count}
+        </button>
         <h4>This is Swiggy Food Ordering Website</h4>
-        <UserClass name="First" location="Bangalore" />
-        <UserClass name="Second" location="Delhi" />
+        <UserClass />
       </div>
     );
   }
