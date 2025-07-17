@@ -260,3 +260,27 @@ const Grocery = lazy(() => import("./components/Grocery"));
 - import() is a dynamic import that returns a promise.
 - React.lazy() tells React to treat the imported module as a lazy-loaded component.
 - Used with <Suspense fallback={<Loader />}><Suspense/> to handle loading states.
+
+# 🧩 Tailwind CSS
+
+Tailwind CSS is a utility-first CSS framework for rapidly building modern, responsive UIs. Instead of writing custom CSS, you compose styles directly in your HTML using pre-defined utility classes like flex, mt-4, text-center, and grid-cols-3. This approach helps maintain consistency, avoid naming issues, and speed up development.
+
+# ⚙️ How Tailwind CSS Uses PostCSS
+
+- Tailwind CSS is built on PostCSS, a powerful tool for transforming CSS with JavaScript plugins.
+- Tailwind’s core is a PostCSS plugin that scans your files and generates only the required utility classes based on your configuration.
+
+It uses PostCSS to:
+
+- Expand Tailwind’s @tailwind directives (@tailwind base, @tailwind components, @tailwind utilities) into full CSS.
+- Apply custom plugins or variants defined in tailwind.config.js.
+- Optimize the final output via tools like autoprefixer and cssnano in production.
+- You typically use it with a PostCSS config like:
+
+// postcss.config.js
+module.exports = {
+plugins: {
+tailwindcss: {},
+autoprefixer: {},
+},
+};
