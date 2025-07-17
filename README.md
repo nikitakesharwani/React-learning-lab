@@ -284,3 +284,30 @@ tailwindcss: {},
 autoprefixer: {},
 },
 };
+
+# 📦 Higher-Order Components (HOCs)
+
+A Higher-Order Component (HOC) is an advanced technique in React for reusing component logic. An HOC is a function that takes a component and returns a new component with enhanced behavior or additional props.
+
+HOC returns a component and the component returns a jsx.
+
+Syntax:
+
+# const EnhancedComponent = withFeature(OriginalComponent);
+
+Use Cases:
+
+- Code reuse and logic abstraction
+- Accessing lifecycle methods in functional components
+- Wrapping components with extra props, authentication, styling, etc.
+
+# Example:
+
+function withLoading(Component) {
+return function WithLoadingComponent({ isLoading, ...props }) {
+if (isLoading) return <div>Loading...</div>;
+return <Component {...props} />;
+};
+}
+
+# ⚠️ HOCs do not modify the original component — they create a wrapper component around it.

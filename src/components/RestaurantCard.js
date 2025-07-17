@@ -19,6 +19,19 @@ const RestaurantCard = ({ resData }) => {
   );
 };
 
+export const withOpenLabel = (RestaurantCard) => {
+  return (props) => {
+    return (
+      <div>
+        <label className="absolute m-2 p-2 bg-black text-white rounded-lg">
+          Open
+        </label>
+        <RestaurantCard {...props} />
+      </div>
+    );
+  };
+};
+
 export default RestaurantCard;
 
 //https://www.swiggy.com/dapi/restaurants/list/update
