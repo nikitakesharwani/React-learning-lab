@@ -10,7 +10,6 @@ const Body = () => {
   let [filteredRestaurant, setFilteredRestaurant] = useState([]);
   const listOfRestaurant = useListOfRestaurant();
   const RestaurantCardOpenStatus = withOpenLabel(RestaurantCard);
-  console.log(listOfRestaurant);
   filteredRestaurant = useListOfRestaurant();
 
   const searchByName = () => {

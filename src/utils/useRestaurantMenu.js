@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { RES_MENU_URL } from "../utils/constants";
 const useRestaurantMenu = (resId) => {
-  console.log("Custom hook called");
   const [resInfo, setResInfo] = useState(null);
 
   useEffect(() => {
@@ -12,7 +11,6 @@ const useRestaurantMenu = (resId) => {
     const data = await fetch(RES_MENU_URL + resId);
     const json = await data.json();
 
-    console.log(json?.data);
     setResInfo(json?.data);
   };
   return resInfo;
