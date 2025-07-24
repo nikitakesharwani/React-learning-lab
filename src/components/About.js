@@ -1,5 +1,6 @@
 import React from "react";
 import UserClass from "../components/UserClass";
+import UserContext from "../utils/UserContext";
 
 class About extends React.Component {
   constructor(props) {
@@ -7,7 +8,6 @@ class About extends React.Component {
     this.state = {
       count: 0,
     };
-
     //console.log("Parent Constructor");
   }
   //componentDidMount is used to make an API call, similar to useEffect()
@@ -16,17 +16,17 @@ class About extends React.Component {
     //console.log("Parent Component Did Mount");
 
     this.timer = setInterval(() => {
-      console.log("Component interval Op");
+      //console.log("Component interval Op");
     }, 1000);
   }
   componentDidUpdate() {
     //updates based on some value
-    console.log("Component Did Update");
+    //console.log("Component Did Update");
   }
 
   componentWillUnmount() {
     clearInterval(this.timer);
-    console.log("Component did unmount");
+    //console.log("Component did unmount");
   }
 
   render() {
@@ -41,8 +41,11 @@ class About extends React.Component {
             });
           }}
         >
-          click to increase{this.state.count}
+          Click to increase{this.state.count}
         </button>
+        <UserContext.Consumer>
+          {({ loggedInUser }) => <h4 className="font-bold ">{loggedInUser}</h4>}
+        </UserContext.Consumer>
         <h4>This is Swiggy Food Ordering Website</h4>
         <UserClass />
       </div>

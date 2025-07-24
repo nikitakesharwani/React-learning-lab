@@ -338,3 +338,44 @@ Key Point:
 - No need for useState
 - Less code, but harder to manage for complex forms
   <input ref={inputRef} />
+
+# ✅ What is useContext?
+
+The useContext hook allows you to access data stored in a React Context without manually using a <Context.Consumer> component. It makes sharing values (like user authentication, themes, etc.) across deeply nested components easier without prop drilling.
+
+# Syntax:
+
+const value = useContext(MyContext);
+
+# 🔁 What is a Context.Provider?
+
+Context.Provider is a component that supplies data (value) to all its nested components. It wraps a part of your component tree and passes down data to components that need it.
+
+# Example:
+
+<UserContext.Provider value={{ name: "Nikita" }}>
+<App />
+</UserContext.Provider>
+
+# 👀 What is Context.Consumer?
+
+Before useContext, Context.Consumer was used to access context data through a render prop function. It's still supported but more verbose than useContext.
+
+# Example:
+
+<UserContext.Consumer>
+{(value) => <p>{value.name}</p>}
+</UserContext.Consumer>
+
+# 🧾 When to use useContext
+
+- For small to medium applications.
+- When you have global settings (like theme, language, or authenticated user info).
+- When you want a quick and simple state-sharing solution without extra libraries.
+
+# 🧾 When to use Redux
+
+- For large-scale applications.
+- When you need centralized, predictable state management.
+- If your app has many unrelated states that need fine-grained updates.
+- When you want middleware support for logging, error handling, or API calls.
