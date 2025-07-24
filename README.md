@@ -311,3 +311,30 @@ return <Component {...props} />;
 }
 
 # ⚠️ HOCs do not modify the original component — they create a wrapper component around it.
+
+# 🔼 Lifting State Up
+
+In React, "Lifting State Up" refers to moving shared state to the closest common ancestor of components that need access to that state. This ensures a single source of truth and allows sibling components to stay in sync.
+
+Example:
+If two child components need to communicate (e.g., input and display), move the state to their parent and pass it down via props.
+
+# 🎛 Controlled Components
+
+A Controlled Component is a form element (like <input>, <textarea>, or <select>) whose value is controlled by React state. The data flows from the component's state to the form element, ensuring predictable behavior.
+
+Key Point:
+
+- Uses useState or a parent prop to control input value
+- Requires onChange handler to update state
+  <input value={name} onChange={(e) => setName(e.target.value)} />
+
+# 🎚 Uncontrolled Components
+
+An Uncontrolled Component manages its own state internally, using the DOM rather than React. You use a ref to access its current value.
+
+Key Point:
+
+- No need for useState
+- Less code, but harder to manage for complex forms
+  <input ref={inputRef} />

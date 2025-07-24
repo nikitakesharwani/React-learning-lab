@@ -1,11 +1,8 @@
 import ItemList from "./ItemList";
-import { useState } from "react";
 
-const RestaurantCategory = ({ data }) => {
-  const [showAccordian, setShowAccordian] = useState(false);
-
-  const toggleAccordian = () => {
-    setShowAccordian(!showAccordian);
+const RestaurantCategory = ({ data, showItems, setShowIndex }) => {
+  const handleClick = () => {
+    setShowIndex();
   };
 
   return (
@@ -13,14 +10,14 @@ const RestaurantCategory = ({ data }) => {
       <div className="bg-gray-50 w-6/12 mx-auto my-4 shadow-lg p-4">
         <div
           className="flex justify-between font-bold text-lg cursor-pointer"
-          onClick={toggleAccordian}
+          onClick={handleClick}
         >
           <span>
             {data.title} ({data.itemCards.length})
           </span>
           <span>🔻</span>
         </div>
-        {showAccordian && <ItemList items={data.itemCards} />}
+        {showItems && <ItemList items={data.itemCards} />}
       </div>
     </div>
   );
