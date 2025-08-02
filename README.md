@@ -77,6 +77,9 @@ We can export a component as named as well as default export
 4. useParams
    A React Router hook used to access dynamic URL parameters. Returns an object of key-value pairs from the current route.
 
+5. useSelector
+   useSelector is a React-Redux hook that allows you to read data from the Redux store inside your React components.
+
 # useEffect Cases
 
 1. If no dependency array => useEffect is called on every render
@@ -393,3 +396,30 @@ Term Role
 reduce() --> Takes a collection and reduces it to a single value
 Redux reducer --> Takes state and action, and returns new state
 Called "reducer" because --> It follows the reduce pattern: action stream → single state
+
+# 🔍 What is useSelector in Redux?
+
+useSelector is a React-Redux hook that allows you to read data from the Redux store inside your React components.
+
+# 🧠 How it works:
+
+It takes a selector function — which receives the entire Redux store state — and returns the specific part of the state you need.
+
+- const cartItems = useSelector((store) => store.cart.items);
+
+# In this example:
+
+- store is the entire Redux state.
+- store.cart.items is the specific slice we want.
+
+# ✅ Why use it?
+
+- Keeps your components connected to the global state.
+- Re-renders the component automatically when the selected state changes.
+- Works only inside components wrapped with <Provider> from react-redux.
+
+# 📌 Example use case:
+
+const user = useSelector((state) => state.auth.user);
+
+This will give you access to the current logged-in user stored in Redux.
