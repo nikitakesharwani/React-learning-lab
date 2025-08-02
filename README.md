@@ -379,3 +379,17 @@ Before useContext, Context.Consumer was used to access context data through a re
 - When you need centralized, predictable state management.
 - If your app has many unrelated states that need fine-grained updates.
 - When you want middleware support for logging, error handling, or API calls.
+
+# Redux Toolkit - steps involved
+
+- Install Libraries - @reduxjs/toolkit and react-redux
+- Build our store
+- Connect our store to our app
+- Create a cartSlice
+- Dispatch an action
+- Read the data using selector
+
+Term Role
+reduce() --> Takes a collection and reduces it to a single value
+Redux reducer --> Takes state and action, and returns new state
+Called "reducer" because --> It follows the reduce pattern: action stream → single state
