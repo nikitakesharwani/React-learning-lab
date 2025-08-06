@@ -1,8 +1,17 @@
 import ReadMore from "./ReadMore";
 import { CON_URL } from "../utils/constants";
+import { useDispatch } from "react-redux";
+import { addItems } from "../utils/cartSlice";
 
 const ItemList = ({ items }) => {
   //console.log(items);
+
+  const dispatch = useDispatch();
+
+  const handleAddItem = (item) => {
+    dispatch(addItems(item));
+  };
+
   return (
     <div>
       {items.map((item) => (
@@ -22,7 +31,10 @@ const ItemList = ({ items }) => {
             {item.card.info.imageId != null ? (
               <div className="w-3/12">
                 <div className="absolute">
-                  <button className="mt-0 mx-14 bg-black text-white rounded-md p-1 ">
+                  <button
+                    className="mt-0 mx-14 bg-black text-white rounded-md p-1 "
+                    onClick={() => handleAddItem(item)}
+                  >
                     Add +
                   </button>
                 </div>

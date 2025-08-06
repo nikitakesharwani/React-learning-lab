@@ -80,6 +80,10 @@ We can export a component as named as well as default export
 5. useSelector
    useSelector is a React-Redux hook that allows you to read data from the Redux store inside your React components.
 
+6. useDispatch
+   useDispatch is a React-Redux hook that allows you to send actions to the Redux store. This is how you tell Redux:
+   “Hey! I want to change the state.”
+
 # useEffect Cases
 
 1. If no dependency array => useEffect is called on every render
@@ -423,3 +427,42 @@ It takes a selector function — which receives the entire Redux store state —
 const user = useSelector((state) => state.auth.user);
 
 This will give you access to the current logged-in user stored in Redux.
+
+# 🔁 useDispatch – Dispatch Actions to the Redux Store
+
+useDispatch is a React-Redux hook that allows you to send actions to the Redux store. This is how you tell Redux:
+
+“Hey! I want to change the state.”
+
+# 📌 How It Works:
+
+You first import and initialize it:
+
+import { useDispatch } from "react-redux";
+const dispatch = useDispatch();
+
+Then, you dispatch an action (defined in your slice or manually):
+
+dispatch(increment());
+Here, increment() is an action creator from your Redux slice.
+
+# 🧠 Why Use It:
+
+- It lets your components interact with global state.
+- Triggers state changes as defined by your reducers.
+- Works together with useSelector to read and update Redux state.
+
+# ✅ Example:
+
+import { useDispatch } from "react-redux";
+import { addToCart } from "../features/cart/cartSlice";
+
+function AddButton({ item }) {
+const dispatch = useDispatch();
+
+return (
+<button onClick={() => dispatch(addToCart(item))}>
+Add to Cart
+</button>
+);
+}
