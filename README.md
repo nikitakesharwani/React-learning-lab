@@ -466,3 +466,75 @@ Add to Cart
 </button>
 );
 }
+
+# POINTS TO REMEMBER IN REDUX:
+
+# Always subscribe to small portion of the store not the whole store--------------------------------------------------------------------
+
+- const cartItems = useSelector((store)=>store.cart.items);
+
+this is more efficient than subscribing to a whole store like this-
+
+- const store = useSelector((store)=>store);
+  const cartItems = store.cart.items;
+
+  # WHY?
+
+- Efficient Re-renders
+  useSelector subscribes to Redux store updates — and your component re-renders whenever the selected data changes.
+
+✅ When you select only store.cart.items, your component will only re-render when cart items change.
+
+❌ But if you select the entire store, your component will re-render for any change in any part of the store — even if cart.items didn’t change.
+
+🧠 Result: More precise subscriptions = fewer unnecessary renders = better performance.
+
+# Reducer vs Reducers--------------------------------------------------------------
+
+- reducers → Many reducer functions for one slice
+- reducer → One big reducer made by combining many slices
+
+# Mutating the state vs not mutating------------------------------------------------------------------------------
+
+# 🔁 Vanilla Redux (older)
+
+❌ Mutating state is not allowed
+You must return a new object every time, because:
+
+❓ Why?
+
+- Redux compares state by reference
+- Redux uses shallow comparison (===) to check if the state has changed.
+- If you mutate the original state, Redux won’t know anything changed — and it won’t trigger re-renders.
+- So in vanilla Redux, you must clone the state manually:
+
+// ❌ Mutating (don't do this in vanilla Redux)
+state.items.push(action.payload);
+
+// ✅ Correct way in vanilla Redux
+return {
+...state,
+items: [...state.items, action.payload],
+};
+
+# ✅ Redux Toolkit (RTK)
+
+🔁 Mutating is allowed — and even encouraged in RTK
+
+state.items.push(action.payload); // ✅ Perfectly valid in RTK
+
+❓ Why?
+Because Redux Toolkit uses Immer.js under the hood.
+
+💡 What is Immer?
+Immer lets you "mutate" the state in your code, but under the hood it produces a new immutable copy for you.
+
+So this:
+
+state.items.push(action.payload);
+Is actually transformed by Immer into:
+
+return {
+...state,
+items: [...state.items, action.payload],
+};
